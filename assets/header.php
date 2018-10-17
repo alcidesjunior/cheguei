@@ -10,6 +10,8 @@
 
     <title>Cheguei! e-Ponto WebApp</title>
 
+    <!-- Favicon -->
+    <link rel=icon href="assets/imgs/favicon.png" sizes="16x16" type="image/png">
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Icon Pack -->

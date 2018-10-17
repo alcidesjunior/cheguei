@@ -2,18 +2,21 @@
 
 <?php require_once(HEADER); ?>
 
+  <div id="login-page">
+
     <!-- Page Content -->
-  <header id="login-page">
+  <header>
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center mt-5">
-          <i class="fas fa-user-clock" style="font-size: 32px; color: whitesmoke;"></i>
+          <img class="img-fluid rounded-circle" src="assets/imgs/logo.png"/>
           <h2>Cheguei! Web App</h2>
           <p class="lead">Painel Administrativo</p>
         </div>
       </div>
     </div>
   </header>
+
    <section>      
           <div class="login-box col-lg-4 mx-auto text-center">
           	<form>
@@ -31,3 +34,5 @@
   </section>
 
 <?php require_once(FOOTER); ?>
+
+</div>

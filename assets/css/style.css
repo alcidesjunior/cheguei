@@ -1,27 +1,27 @@
 :root {
 	--azul: #0d122b;
-	--roxo: #0f0122;
-	--laranja: #dfc217;
-	--preto: rgba(0,0,0,0.5);
+	--azul-claro: #4c79ac;
+	--azul-escuro: #0a0e22;
+	--amarelo: #dfc217;
+	--dark-transp: rgba(0,0,0,0.5);
+	--preto: #000;
 	--branco: #fff;
-}
-
-body {
-	background-color: var(--azul);
 }
 
 #login-page {
 	background-color: var(--azul);
+}
+
+#login-page header {
+	background-color: var(--azul);
 	color: var(--branco);
-	padding: 50px auto;
 }
 
 #login-page .login-box {
-	margin-top: 50px !important;
-	padding: 30px;
+	margin-top: 30px !important;
 }
 
-.login-box label {
+#login-page .login-box label {
 	color: var(--branco) !important;
 }
 
@@ -41,7 +41,11 @@ nav .nav-link {
 
 nav .nav-item a:hover {
 	background-color: var(--branco) !important;
-	color: var(--preto) !important;
+	color: var(--azul) !important;
+}
+
+#panel {
+	min-height: 500px;
 }
 
 section {
@@ -49,10 +53,8 @@ section {
 	padding: 50px 0;
 }
 
-footer {
-	margin-top: 50px;
-	background-color: var(--preto);
+#login-page footer {
+	background-color: var(--dark-transp);
 	color: var(--branco);
 	padding: 30px 0 50px 0;
-	border-bottom: white solid 3px;
 }
