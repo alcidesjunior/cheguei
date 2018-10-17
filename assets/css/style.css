@@ -1,0 +1,58 @@
+:root {
+	--azul: #0d122b;
+	--roxo: #0f0122;
+	--laranja: #dfc217;
+	--preto: rgba(0,0,0,0.5);
+	--branco: #fff;
+}
+
+body {
+	background-color: var(--azul);
+}
+
+#login-page {
+	background-color: var(--azul);
+	color: var(--branco);
+	padding: 50px auto;
+}
+
+#login-page .login-box {
+	margin-top: 50px !important;
+	padding: 30px;
+}
+
+.login-box label {
+	color: var(--branco) !important;
+}
+
+nav {
+	background-color: var(--azul);
+	padding: 15px auto;
+}
+
+nav .nav-link {
+	font-family: 'Roboto', sans-serif;
+	font-size: 15px;
+	font-weight: 400;
+	text-transform: uppercase;
+	margin-left: 10px;
+	border-radius: 3px;
+}
+
+nav .nav-item a:hover {
+	background-color: var(--branco) !important;
+	color: var(--preto) !important;
+}
+
+section {
+	height: 100%;
+	padding: 50px 0;
+}
+
+footer {
+	margin-top: 50px;
+	background-color: var(--preto);
+	color: var(--branco);
+	padding: 30px 0 50px 0;
+	border-bottom: white solid 3px;
+}
