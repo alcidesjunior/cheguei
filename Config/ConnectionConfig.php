@@ -4,7 +4,7 @@ define('DBNAME','Cheguei');
 define('CHARSET','utf8');
 define('USER','alcides');
 define('PWD','123');
-class ConnectionDB{
+class ConnectionConfig{
 	//atributo de instancia
 	private static $pdo = null;
 	private function __construct(){}

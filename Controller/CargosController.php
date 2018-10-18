@@ -21,7 +21,12 @@ class CargosController{
 	public function update($cargo, $id){
 		return $this->cargo->update($cargo,$id);
 	}
-	public function destroy(){}
+	public function find($term){
+		return $this->cargo->find($term);
+	}
+	public function destroy($id){
+		return $this->cargo->delete($id);
+	}
 }
 
 ?>
