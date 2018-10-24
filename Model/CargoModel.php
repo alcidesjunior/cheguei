@@ -48,10 +48,10 @@ class CargoModel{
 			die($e->getMessage());
 		}
 	}
-	public function delete($id){
-		$this->setSql("delete from cargos where id = (?)");
+	public function delete($term){
+		$this->setSql("delete from cargos where $term");
 		$query  = $this->_db->prepare($this->sql);
-		$query->bindValue(1,$id);
+		// $query->bindValue(1,$id);
 
 
 		try{

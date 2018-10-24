@@ -1,5 +1,5 @@
 <?php
-require_once "../model/funcionarioModel.php";
+// require_once "../model/funcionarioModel.php";
 class FuncionariosController{
 	private $funcionario;
 
@@ -10,13 +10,25 @@ class FuncionariosController{
 	public function getAll(){
 		return $this->funcionario->getAll();
 	}
-	public function show(){}
-	public function create($nome,$cpf,$rg,$dt_admissao,$dt_demissao=NULL,$cargo_id){
-		$dt = $this->funcionario->insert($$nome,$cpf,$rg,$dt_admissao,$dt_demissao,$cargo_id);
+	public function show($id){
+		return $this->funcionario->getById($id);
+	}
+	public function create($nome,$cpf,$rg,$dt_admissao,$dt_demissao=0000,$cargo_id){
+		$dt = $this->funcionario->insert($nome,$cpf,$rg,$dt_admissao,$dt_demissao,$cargo_id);
 		return ($dt ? true : false);
 	}
-	public function update(){}
-	public function destroy(){}
+	public function update($fieldValue, $condition){
+		/*
+			$fieldValue = ["campo"=>"valor"]
+		*/
+		return $this->funcionario->update($fieldValue, $condition);
+	}
+	public function find($term){
+		return $this->funcionario->find($term);
+	}
+	public function destroy($id){
+		return $this->funcionario->delete($id);
+	}
 }
 
 ?>

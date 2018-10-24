@@ -24,8 +24,8 @@ class CargosController{
 	public function find($term){
 		return $this->cargo->find($term);
 	}
-	public function destroy($id){
-		return $this->cargo->delete($id);
+	public function destroy($term){
+		return $this->cargo->delete($term);
 	}
 }
 

@@ -38,7 +38,7 @@ final class CargosTest extends TestCase{
 	}
 	public function testDestroy(){
 
-		$cargo = ($this->obj->destroy(8) ? true : false);
+		$cargo = ($this->obj->destroy("id=4") ? true : false);
 		$this->assertTrue($cargo);
 	}
 }
