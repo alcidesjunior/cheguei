@@ -13,7 +13,7 @@ final class FuncionariosTest extends TestCase{
 	public function testGetAll(){
 
 		$funcionario = (count($this->obj->getAll())>=0 ? true : false);
-		$this->assertTrue($cargos);
+		$this->assertTrue($funcionario);
 	}
 	public function testAdd(){
 	

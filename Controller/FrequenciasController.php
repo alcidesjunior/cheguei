@@ -1,22 +1,34 @@
 <?php
-require_once "../model/frequenciaModel.php";
-class CargosController{
-	private $cargo;
+// require_once "../model/frequenciaModel.php";
+class FrequenciasController{
+	private $frequencia;
 
 	public function __construct(){
-		$this->cargo = new FrequenciaModel();
+		$this->frequencia = new FrequenciaModel();
 	}
 
 	public function getAll(){
-		return $this->cargo->getAll();
+		return $this->frequencia->getAll();
 	}
-	public function show(){}
+	public function show($id){
+		return $this->frequencia->getById($id);
+	}
 	public function create($funcionario_id,$hora_entrada,$hora_saida,$created_at){
-		$dt = $this->cargo->insert($funcionario_id,$hora_entrada,$hora_saida,$created_at);
+		$dt = $this->frequencia->insert($funcionario_id,$hora_entrada,$hora_saida,$created_at);
 		return ($dt ? true : false);
 	}
-	public function update(){}
-	public function destroy(){}
+	public function update($fieldValue, $condition){
+		/*
+			$fieldValue = ["campo"=>"valor"]
+		*/
+		return $this->frequencia->update($fieldValue, $condition);
+	}
+	public function find($term){
+		return $this->frequencia->find($term);
+	}
+	public function destroy($id){
+		return $this->frequencia->delete($id);
+	}
 }
 
 ?>
