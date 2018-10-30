@@ -6,9 +6,10 @@
 		foreach($folders as $word){
 			if(strpos($classname,$word)){
 				$folder = $word."/";
-				$path = "/";
+				$path = "../../../";
 				if(file_exists("$path"."$folder"."$classname.php")){
 					include "$path"."$folder"."$classname.php";
+					//print("$classname<br>");
 				}else{
 					print "$path"."$folder"."$classname.php";
 					die("\nFile nem existe");
