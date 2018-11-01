@@ -15,12 +15,26 @@ class FuncionarioModel{
 		return $this->_db->lastInsertId();
 	}
 	public function getAll($orderBy="id",$order="asc"){
-		$this->setSql("select * from funcionarios order by ".$orderBy." ".$order);
-		$query = $this->_db->prepare($this->sql);
+		$this->setSql("
+			select funcionarios.*,cargos.cargo from funcionarios
+			inner join cargos on funcionarios.cargo_id = cargos.id 
+			
+			");
+		$query1 = $this->_db->prepare($this->sql);
+		$this->setSql("
+			select dispositivos.id,dispositivos.mac_address as dispositivo_id from dispositivos
+			inner join funcionarios on funcionarios.id = dispositivos.funcionario_id");
+		$query2 = $this->_db->prepare($this->sql);
 		try{
-			$query->execute();
+			$query1->execute();
+			$query2->execute();
 
-			return $query->fetchall(PDO::FETCH_OBJ);
+			$funcionarioData = $query1->fetchall(PDO::FETCH_OBJ);
+			$deviceData = $query2->fetchall(PDO::FETCH_OBJ);
+
+			$allData['funcionarios'] = $funcionarioData;
+			$allData['funcionarios']['disposivitos'] = $deviceData;
+			return $allData; 
 		}catch(PDOException $e){
 			print($e->getMessage());
 		}
