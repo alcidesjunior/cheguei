@@ -23,6 +23,9 @@ class FuncionariosController{
 		*/
 		return $this->funcionario->update($fieldValue, $condition);
 	}
+	public function lastID(){
+		return $this->funcionario->getLastID();
+	}
 	public function find($term){
 		return $this->funcionario->find($term);
 	}

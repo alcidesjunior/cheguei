@@ -6,6 +6,7 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 include_once "../autoload.php";
 
 $funcionario = new FuncionariosController();
+$dispositivo = new DispositivosController();
 $data = json_decode(file_get_contents("php://input"));
 
 function notEmpty($field){
@@ -20,7 +21,12 @@ if( isset($data) ){
 		$create = $funcionario->create($data->nome,$data->cpf,$data->rg,$data->dt_admissao,$data->dt_demissao,$data->cargo_id);
 		if($create){
 			http_response_code(201);
-			echo json_encode(array("message"=>"Funcionário criado!"));
+
+			foreach ($data->dispositivos as $device) {
+				$dispositivo->create($device->mac_address,$funcionario->lastID());
+			}
+
+			echo json_encode(array( "message"=>"Funcionário criado!" ) );
 		}else{
 			http_response_code(422);
 			echo json_encode(array("message"=>"Erro ao criar funcionário!"));

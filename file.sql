@@ -51,7 +51,7 @@ CREATE TABLE `dispositivos` (
   `funcionario_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `funcionario_id` (`funcionario_id`),
-  CONSTRAINT `dispositivos_ibfk_1` FOREIGN KEY (`funcionario_id`) REFERENCES `funcionarios` (`id`)
+ FOREIGN KEY (`funcionario_id`) REFERENCES `funcionarios` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -79,7 +79,7 @@ CREATE TABLE `frequencia` (
   `created_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `funcionario_id` (`funcionario_id`),
-  CONSTRAINT `frequencia_ibfk_1` FOREIGN KEY (`funcionario_id`) REFERENCES `funcionarios` (`id`)
+  FOREIGN KEY (`funcionario_id`) REFERENCES `funcionarios` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -109,7 +109,7 @@ CREATE TABLE `funcionarios` (
   `cargo_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `cargo_id` (`cargo_id`),
-  CONSTRAINT `funcionarios_ibfk_1` FOREIGN KEY (`cargo_id`) REFERENCES `cargos` (`id`)
+  FOREIGN KEY (`cargo_id`) REFERENCES `cargos` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

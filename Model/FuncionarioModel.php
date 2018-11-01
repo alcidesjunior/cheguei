@@ -11,6 +11,9 @@ class FuncionarioModel{
 	protected function setSql($sql_query){
 		return isset($sql_query) ? $this->sql = $sql_query : false;
 	}
+	public function getLastID(){
+		return $this->_db->lastInsertId();
+	}
 	public function getAll($orderBy="id",$order="asc"){
 		$this->setSql("select * from funcionarios order by ".$orderBy." ".$order);
 		$query = $this->_db->prepare($this->sql);
