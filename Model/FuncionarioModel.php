@@ -15,26 +15,33 @@ class FuncionarioModel{
 		return $this->_db->lastInsertId();
 	}
 	public function getAll($orderBy="id",$order="asc"){
-		$this->setSql("
-			select funcionarios.*,cargos.cargo from funcionarios
-			inner join cargos on funcionarios.cargo_id = cargos.id 
-			
-			");
-		$query1 = $this->_db->prepare($this->sql);
-		$this->setSql("
-			select dispositivos.id,dispositivos.mac_address as dispositivo_id from dispositivos
-			inner join funcionarios on funcionarios.id = dispositivos.funcionario_id");
-		$query2 = $this->_db->prepare($this->sql);
+		$this->setSql("select funcionarios.*,cargos.cargo from funcionarios inner join cargos on cargos.id = funcionarios.cargo_id");
+		$query = $this->_db->prepare($this->sql);
 		try{
-			$query1->execute();
-			$query2->execute();
+			$query->execute();
+			
+			while($funcionariosResult = $query->fetch(PDO::FETCH_OBJ)){
+				$funcionariosArray['funcionarios'][] = $funcionariosResult;
+				
+				$this->setSql("select * from dispositivos where funcionario_id={$funcionariosResult->id}");
+				$queryDispositivo = $this->_db->prepare($this->sql);
+				$queryDispositivo->execute();
 
-			$funcionarioData = $query1->fetchall(PDO::FETCH_OBJ);
-			$deviceData = $query2->fetchall(PDO::FETCH_OBJ);
+				$this->setSql("select * from frequencia where funcionario_id={$funcionariosResult->id}");
+				$queryFrequencia = $this->_db->prepare($this->sql);
+				$queryFrequencia->execute();
 
-			$allData['funcionarios'] = $funcionarioData;
-			$allData['funcionarios']['disposivitos'] = $deviceData;
-			return $allData; 
+				foreach($funcionariosArray['funcionarios'] as $currentFuncionario){
+					if( $funcionariosResult->id == $currentFuncionario->id ){
+						$currentFuncionario->dispositivos = $queryDispositivo->fetchall(PDO::FETCH_OBJ);
+						$currentFuncionario->frequencia = $queryFrequencia->fetchall(PDO::FETCH_OBJ);
+					}
+					
+				}
+				
+			}
+			return $funcionariosArray;
+			
 		}catch(PDOException $e){
 			print($e->getMessage());
 		}
