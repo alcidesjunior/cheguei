@@ -40,12 +40,17 @@ class CargoModel{
 		$this->setSql("select * from cargos where id = ? ");
 		$query = $this->_db->prepare($this->sql);
 		$query->bindValue(1,$id);
-
+	
 		try{
 			$query->execute();
-			return $query->fetchall(PDO::FETCH_OBJ);
+			if($query->rowCount()>0){
+				
+				return $query->fetchall(PDO::FETCH_OBJ);
+			}else{
+				return 0;
+			}
 		}catch(PDOException $e){
-			die($e->getMessage());
+				die($e->getMessage());
 		}
 	}
 	public function delete($term){

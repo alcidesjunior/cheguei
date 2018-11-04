@@ -1,6 +1,5 @@
 <?php
 // require_once "../model/cargoModel.php";
-declare(strict_types=1);
 class CargosController{
 	private $cargo;
 

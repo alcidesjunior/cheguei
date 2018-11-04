@@ -1,12 +1,12 @@
 <?php 
 header("Content-Type: application/json; charset=UTF-8");
-header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Allow-Methods: GET");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 include_once "../autoload.php";
 
 $cargo = new CargosController();
-$data = json_decode(file_get_contents("php://input"));
+//json_decode(file_get_contents("php://input"));
 
 function notEmpty($field){
 	if(!empty(trim($field))){
@@ -15,20 +15,25 @@ function notEmpty($field){
 	return false;
 }
 
-if( isset($data) ){
-	if(notEmpty($data->cargo_id)){
-		$show = $cargo->show($data->cargo_id);
-		if($show){
-			http_response_code(201);
-			echo json_encode($show[0]);
+if( isset($_GET['cargo_id'])){
+	if(is_numeric($_GET['cargo_id'])){
+		$data = $_GET['cargo_id'];
+		if(notEmpty($data)){
+			
+			$show = $cargo->show($data);
+			if($show){
+				http_response_code(200);
+				echo json_encode($show[0]);
+			}
 		}else{
-			http_response_code(422);
-			echo json_encode(array("message"=>"Erro ao atualizar cargo!"));
+			http_response_code(403);
+			echo json_encode(array("message"=>"Preencha os campos obrigatórios!"));
 		}
 	}else{
 		http_response_code(403);
-		echo json_encode(array("message"=>"Preencha os campos obrigatórios!"));
+		echo json_encode(array("message"=>"Parâmetro inválido, passe um inteiro."));
 	}
+
 }else{
 	http_response_code(403);
 	echo json_encode(array("message"=>"Envie dados!"));
