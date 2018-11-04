@@ -96,15 +96,39 @@ class FuncionarioModel{
         }
 	}
 	public function getById($id){
-		$this->setSql("select * from funcionarios where id = ? ");
+		$this->setSql("select funcionarios.*,cargos.cargo from funcionarios inner join cargos on cargos.id = funcionarios.cargo_id where funcionarios.id = ".addslashes($id));
 		$query = $this->_db->prepare($this->sql);
-		$query->bindValue(1,$id);
-
 		try{
+
 			$query->execute();
-			return $query->fetchall(PDO::FETCH_OBJ);
+			if($query->rowCount()>0){
+				while($funcionariosResult = $query->fetch(PDO::FETCH_OBJ)){
+					$funcionariosArray['funcionarios'][] = $funcionariosResult;
+					
+					$this->setSql("select * from dispositivos where funcionario_id={$funcionariosResult->id}");
+					$queryDispositivo = $this->_db->prepare($this->sql);
+					$queryDispositivo->execute();
+
+					$this->setSql("select * from frequencia where funcionario_id={$funcionariosResult->id}");
+					$queryFrequencia = $this->_db->prepare($this->sql);
+					$queryFrequencia->execute();
+
+					foreach($funcionariosArray['funcionarios'] as $currentFuncionario){
+						if( $funcionariosResult->id == $currentFuncionario->id ){
+							$currentFuncionario->dispositivos = $queryDispositivo->fetchall(PDO::FETCH_OBJ);
+							$currentFuncionario->frequencia = $queryFrequencia->fetchall(PDO::FETCH_OBJ);
+						}
+						
+					}
+					
+				}
+				return $funcionariosArray;
+			}else{
+				return array("vazio");
+			}
+			
 		}catch(PDOException $e){
-			die($e->getMessage());
+			print($e->getMessage());
 		}
 	}
 	public function find($term){

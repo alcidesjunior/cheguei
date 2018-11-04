@@ -4,17 +4,13 @@ header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 include_once "../autoload.php";
+include_once "../Helpers/utilFunctions.php";
 
 $funcionario = new FuncionariosController();
 $dispositivo = new DispositivosController();
 $data = json_decode(file_get_contents("php://input"));
 
-function notEmpty($field){
-	if(!empty(trim($field))){
-		return true;
-	}
-	return false;
-}
+
 
 if( isset($data) ){
 	if( notEmpty($data->nome) and notEmpty($data->cpf) and notEmpty($data->rg) and notEmpty($data->cargo_id)){
