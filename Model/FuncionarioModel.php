@@ -15,7 +15,7 @@ class FuncionarioModel{
 		return $this->_db->lastInsertId();
 	}
 	public function getAll($orderBy="id",$order="asc"){
-		$this->setSql("select funcionarios.*,cargos.cargo from funcionarios inner join cargos on cargos.id = funcionarios.cargo_id");
+		$this->setSql("select funcionarios.*,cargos.cargo from funcionarios inner join cargos on cargos.id = funcionarios.cargo_id order by funcionarios.nome asc");
 		$query = $this->_db->prepare($this->sql);
 		try{
 			$query->execute();

@@ -11,7 +11,7 @@ class FrequenciaModel{
 	protected function setSql($sql_query){
 		return isset($sql_query) ? $this->sql = $sql_query : false;
 	}
-	public function getAll($orderBy="id",$order="asc"){
+	public function getAll($orderBy="frequencia.created_at",$order="asc"){
 		$this->setSql("
 			select 
 				funcionarios.nome,
@@ -29,12 +29,12 @@ class FrequenciaModel{
 				funcionarios
 			on 
 				frequencia.funcionario_id = funcionarios.id
-		 ".$orderBy." ".$order);
+		 order by ".$orderBy." ".$order);
 		$query = $this->_db->prepare($this->sql);
 		try{
 			$query->execute();
-
-			return $query->fetchall(PDO::FETCH_OBJ);
+			$frequencias['frequencias'] =  $query->fetchall(PDO::FETCH_OBJ);
+			return $frequencias;
 		}catch(PDOException $e){
 			print($e->getMessage());
 		}
