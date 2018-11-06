@@ -4,6 +4,7 @@ define('DBNAME','cheguei');
 define('CHARSET','utf8');
 define('USER','root');
 define('PWD','');
+
 class ConnectionConfig{
 	//atributo de instancia
 	private static $pdo = null;
