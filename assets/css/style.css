@@ -1,19 +1,17 @@
 :root {
-	--azul: #0d122b;
-	--azul-claro: #4c79ac;
 	--azul-escuro: #0a0e22;
-	--amarelo: #dfc217;
-	--dark-transp: rgba(0,0,0,0.5);
-	--preto: #000;
+	--azul-petroleo: #0b4f6c;
+	--azul-claro: #145c9e;
 	--branco: #fff;
+	--preto: #000;
 }
 
 #login-page {
-	background-color: var(--azul);
+	background-color: var(--azul-petroleo);
 }
 
 #login-page header {
-	background-color: var(--azul);
+	background-color: var(--azul-petroleo);
 	color: var(--branco);
 }
 
@@ -26,7 +24,6 @@
 }
 
 nav {
-	background-color: var(--azul);
 	padding: 15px auto;
 }
 
@@ -40,8 +37,8 @@ nav .nav-link {
 }
 
 nav .nav-item a:hover {
-	background-color: var(--branco) !important;
-	color: var(--azul) !important;
+	background-color: var(--azul-claro) !important;
+	color: var(--branco) !important;
 }
 
 #panel {
@@ -51,10 +48,22 @@ nav .nav-item a:hover {
 section {
 	height: 100%;
 	padding: 50px 0;
+	color: var(--azul-escuro);
 }
 
 #login-page footer {
-	background-color: var(--dark-transp);
+	background-color: var(--azul-escuro);
 	color: var(--branco);
 	padding: 30px 0 50px 0;
+}
+
+.gradiente {
+	background: rgb(10,14,34);
+	background: linear-gradient(125deg, rgba(10,14,34,1) 0%, rgba(11,79,108,1) 78%); 
+}
+
+#panel .botoes-func {
+	margin: 10px;
+	padding: 15px;
+	line-height: 1.5em;
 }
