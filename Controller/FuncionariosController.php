@@ -23,6 +23,9 @@ class FuncionariosController{
 		*/
 		return $this->funcionario->update($fieldValue, $condition);
 	}
+	public function login($mac_address){
+		return $this->funcionario->login($mac_address);
+	}
 	public function lastID(){
 		return $this->funcionario->getLastID();
 	}

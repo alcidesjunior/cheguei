@@ -95,6 +95,40 @@ class FuncionarioModel{
         
         }
 	}
+
+	public function login($mac_address){
+		$this->setSql("select funcionarios.*,cargos.cargo from funcionarios inner join cargos on cargos.id = funcionarios.cargo_id inner join dispositivos on dispositivos.funcionario_id = funcionarios.id where dispositivos.mac_address = '".addslashes($mac_address)."'");
+		$query = $this->_db->prepare($this->sql);
+		try{
+
+			$query->execute();
+			if($query->rowCount()>0){
+				while($funcionariosResult = $query->fetch(PDO::FETCH_OBJ)){
+					$funcionariosArray['funcionarios'][] = $funcionariosResult;
+					
+					$this->setSql("select * from dispositivos where funcionario_id={$funcionariosResult->id}");
+					$queryDispositivo = $this->_db->prepare($this->sql);
+					$queryDispositivo->execute();
+
+
+					foreach($funcionariosArray['funcionarios'] as $currentFuncionario){
+						if( $funcionariosResult->id == $currentFuncionario->id ){
+							$currentFuncionario->dispositivos = $queryDispositivo->fetchall(PDO::FETCH_OBJ);
+						}
+						
+					}
+					
+				}
+				return $funcionariosArray;
+			}else{
+				return 0;
+			}
+			
+		}catch(PDOException $e){
+			print($e->getMessage());
+		}
+	}
+
 	public function getById($id){
 		$this->setSql("select funcionarios.*,cargos.cargo from funcionarios inner join cargos on cargos.id = funcionarios.cargo_id where funcionarios.id = ".addslashes($id));
 		$query = $this->_db->prepare($this->sql);
