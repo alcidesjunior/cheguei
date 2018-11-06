@@ -1,0 +1,39 @@
+[
+    {
+        "id": "1",
+        "nome": "Alcides Junior",
+        "cpf": "2147483647",
+        "rg": "20001245",
+        "dt_admissao": "2018-10-03",
+        "dt_demissao": "1970-01-01",
+        "cargo_id": "1",
+        "cargo": "Programador Web",
+        "dispositivos":[
+            {
+                "mac_address": "1b:32:f4:c2",
+                "dispositivo_id": "1"
+            },
+            {
+                "mac_address": "22:74:6a:9e",
+                "dispositivo_id": "2"
+            }
+        ]
+        
+    },
+    {
+        "id": "2",
+        "nome": "Marcos David",
+        "cpf": "2147483647",
+        "rg": "20051545",
+        "dt_admissao": "2015-02-01",
+        "dt_demissao": "1970-01-01",
+        "cargo_id": "1",
+        "cargo": "Programador Web",
+        "dispositivos":[
+            {
+                "mac_address": "7d:26:f7:a2",
+                "dispositivo_id": "3"
+            }
+        ]
+    }
+]
