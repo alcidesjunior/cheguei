@@ -41,6 +41,13 @@ nav .nav-item a:hover {
 	color: var(--branco) !important;
 }
 
+.page-header {
+	font-family: 'Open Sans', sans-serif;
+	letter-spacing: 0.18px;
+	font-weight: 500;
+	color: var(--azul-petroleo);
+}
+
 #panel {
 	min-height: 500px;
 }
@@ -73,4 +80,22 @@ section {
 	border-radius: 50px;
 	background-color: var(--azul-claro);
 	border-color: var(--azul-claro);
+}
+
+#form-cadastro label {
+	color: var(--azul-claro) !important;
+	font-weight: bold;
+}
+
+.botoes-info {
+	margin: 5px;
+}
+
+#panel .card {
+	background-color: var(--azul-escuro);
+	color: var(--branco);
+}
+
+footer {
+	padding: 100px auto 50px;
 }
