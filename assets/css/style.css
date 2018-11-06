@@ -68,11 +68,9 @@ section {
 	line-height: 1.5em;
 }
 
-.btn-custom {
+.botao-redondo {
 	padding: 1px 15px 3px 2px;
 	border-radius: 50px;
-}
-
-.btn-icon {
-	padding: 8px;
+	background-color: var(--azul-claro);
+	border-color: var(--azul-claro);
 }
