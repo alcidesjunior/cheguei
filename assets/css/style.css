@@ -1,0 +1,101 @@
+:root {
+	--azul-escuro: #0a0e22;
+	--azul-petroleo: #0b4f6c;
+	--azul-claro: #145c9e;
+	--branco: #fff;
+	--preto: #000;
+}
+
+#login-page {
+	background-color: var(--azul-petroleo);
+}
+
+#login-page header {
+	background-color: var(--azul-petroleo);
+	color: var(--branco);
+}
+
+#login-page .login-box {
+	margin-top: 30px !important;
+}
+
+#login-page .login-box label {
+	color: var(--branco) !important;
+}
+
+nav {
+	padding: 15px auto;
+}
+
+nav .nav-link {
+	font-family: 'Roboto', sans-serif;
+	font-size: 15px;
+	font-weight: 400;
+	text-transform: uppercase;
+	margin-left: 10px;
+	border-radius: 3px;
+}
+
+nav .nav-item a:hover {
+	background-color: var(--azul-claro) !important;
+	color: var(--branco) !important;
+}
+
+.page-header {
+	font-family: 'Open Sans', sans-serif;
+	letter-spacing: 0.18px;
+	font-weight: 500;
+	color: var(--azul-petroleo);
+}
+
+#panel {
+	min-height: 500px;
+}
+
+section {
+	height: 100%;
+	padding: 50px 0;
+	color: var(--azul-escuro);
+}
+
+#login-page footer {
+	background-color: var(--azul-escuro);
+	color: var(--branco);
+	padding: 30px 0 50px 0;
+}
+
+.gradiente {
+	background: rgb(10,14,34);
+	background: linear-gradient(125deg, rgba(10,14,34,1) 0%, rgba(11,79,108,1) 78%); 
+}
+
+#panel .botoes-func {
+	margin: 10px;
+	padding: 15px;
+	line-height: 1.5em;
+}
+
+.botao-redondo {
+	padding: 1px 15px 3px 2px;
+	border-radius: 50px;
+	background-color: var(--azul-claro);
+	border-color: var(--azul-claro);
+}
+
+#form-cadastro label {
+	color: var(--azul-claro) !important;
+	font-weight: bold;
+}
+
+.botoes-info {
+	margin: 5px;
+}
+
+#panel .card {
+	background-color: var(--azul-escuro);
+	color: var(--branco);
+}
+
+footer {
+	padding: 100px auto 50px;
+}

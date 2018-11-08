@@ -1,0 +1,33 @@
+<section id="freq">
+      <div class="container">
+        <div class="form-row align-items-center">
+          <div class="col-auto">
+            <label class="sr-only" for="inlineFormInput">Filtrar</label>
+            <input ng-model="searchFrequencia" type="search" class="form-control w-100 mb-4" id="inlineFormInput" placeholder="Pesquisar">
+          </div>
+        </div>
+      </div>
+
+      <div class="table-responsive col-lg-12 mx-auto text-center">
+        <table class="table">
+            <thead class="thead text-white" style="background-color: var(--azul-escuro);">
+              <tr>
+                <th scope="col">Funcionário</th>
+                <th scope="col">RG</th>
+                <th scope="col">CPF</th>
+                <th scope="col">Hora Entrada</th>
+                <th scope="col">Hora Saída</th>
+              </tr>
+            </thead>
+          <tbody>
+                <tr ng-repeat="frequencia in frequencias | filter:searchFrequencia">
+                  <td>{{frequencia.nome}}</td>
+                  <td>{{frequencia.rg}}</td>
+                  <td>{{frequencia.cpf}}</td>
+                  <td >{{frequencia.hora_entrada | date:'dd/MM/yyyy HH:mm:ss'}}</td>
+                  <td>{{frequencia.hora_saida}}</td>
+                </tr>
+              </tbody>
+          </table>
+        </div>   
+  </section>

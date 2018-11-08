@@ -1,0 +1,60 @@
+<section id="form-cadastro">  
+          <div class="container ">
+            <form ng-model="funcionario">
+              <div class="row">
+                  <div class="col-lg-6">
+                    <label>Nome</label>
+                    <input type="text"  ng-model="funcionario.nome"  class="form-control">
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-lg-3">
+                    <label>RG</label>
+                    <input type="text" ng-model="funcionario.rg" class="form-control">
+                  </div>
+                  <div class="col-lg-3">
+                    <label>CPF</label>
+                    <input type="text" ng-model="funcionario.cpf" class="form-control">
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-lg-6">
+                    <label>Cargo</label>
+                    <select class="form-control" ng-model="funcionario.cargo_id">
+                      <option ng-repeat="cargo in cargos" value="{{cargo.id}}">
+                        {{cargo.cargo}}
+                      </option>
+                    </select>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-lg-3">
+                    <label>Data de Admissão</label>
+                    <input type="text" ng-model="funcionario.dt_admissao" class="form-control">
+                  </div>
+                  <div class="col-lg-3">
+                    <label>Data de Demissão</label>
+                    <input type="text" ng-model="funcionario.dt_demissao" class="form-control">
+                  </div>
+              </div><br>
+              <h3>Dispositivos<br><input type="text" ng-model="inputNovoDevice"><button class="btn btn-primary" type="button" ng-click="novoDispositivo()">adicionar</button></h3><br>
+              <div class="row">
+                  <div class="col-lg-4">
+                    <label>Dispositivo</label>
+                    <span ng-repeat="dispositivo in funcionario.dispositivos">
+                      <div class="row">
+                        <div class="col-lg-7">
+                          <input type="text" ng-model="dispositivo.mac_address"  class="form-control" ><br>
+                        </div>
+                        <div class="col-lg-1">
+                          <button type="button" class="btn btn-danger" ng-click="removerCargo(dispositivo)">X</button>
+                        </div>
+                      </div>
+                      <input type="hidden" ng-value="dispositivo.id" name="">
+                    </span>
+                  </div>
+              </div>
+              <button type="submit" class="botoes-func btn btn-primary" ng-click="cadastrar()">Salvar</button>
+            </form>
+          </div>   
+  </section>

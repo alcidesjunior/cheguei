@@ -1,0 +1,37 @@
+
+<section id="freq">
+      <div class="container">
+        <div class="form-row align-items-center">
+          <div class="col-auto">
+            <label class="sr-only" for="inlineFormInput">Filtrar</label>
+            <input type="search" class="form-control w-100 mb-4" id="inlineFormInput" placeholder="Pesquisar">
+          </div>
+        </div>
+      </div>
+
+      <div class="table-responsive col-lg-12 mx-auto text-center">
+        <table class="table">
+            <thead class="thead text-white" style="background-color: var(--azul-escuro);">
+              <tr>
+                <th scope="col">Funcionário</th>
+                <th scope="col">RG</th>
+                <th scope="col">CPF</th>
+                <th scope="col">Data Admissão</th>
+                <th scope="col">Data Demissão</th>
+                <th scope="col">Mais</th>
+
+              </tr>
+            </thead>
+          <tbody>
+                <tr ng-repeat="funcionario in funcionarios">
+                  <td>{{funcionario.nome}}</td>
+                  <td>{{funcionario.rg}}</td>
+                  <td>{{funcionario.cpf}}</td>
+                  <td>{{funcionario.dt_admissao}}</td>
+                  <td>{{funcionario.dt_demissao}}</td>
+                  <td><a href="#!detailsFuncionario/{{funcionario.id}}">Ver/Editar</a></td>
+                </tr>
+              </tbody>
+          </table>
+        </div>   
+  </section>
