@@ -1,0 +1,28 @@
+
+<section id="freq">
+      <div class="container">
+        <div class="form-row align-items-center">
+          <div class="col-auto">
+            <label class="sr-only" for="inlineFormInput">Filtrar</label>
+            <input type="search" class="form-control w-100 mb-4" id="inlineFormInput" placeholder="Pesquisar">
+          </div>
+        </div>
+      </div>
+
+      <div class="table-responsive col-lg-12 mx-auto text-center">
+        <table class="table">
+            <thead class="thead text-white" style="background-color: var(--azul-escuro);">
+              <tr>
+                <th scope="col">Cargo</th>
+                <th scope="col">Mais</th>
+              </tr>
+            </thead>
+          <tbody>
+                <tr ng-repeat="cargo in cargos">
+                  <td>{{cargo.cargo}}</td>
+                  <td><a href="#!detailsCargo/{{cargo.id}}">Ver/Editar</a></td>
+                </tr>
+              </tbody>
+          </table>
+        </div>   
+  </section>

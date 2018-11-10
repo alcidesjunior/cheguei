@@ -16,4 +16,16 @@ app.config(function($routeProvider){
 		templateUrl: 'View/funcionarios/novoFuncionario.html',
 		controller: 'FuncionariosCtrl'
 	})
+	.when('/cargos',{
+		templateUrl: 'View/cargos/cargos.html',
+		controller: 'CargosCtrl'
+	})
+	.when('/novoCargo',{
+		templateUrl: 'View/cargos/novoCargo.html',
+		controller: 'CargosCtrl'
+	})
+	.when('/detailsCargo/:cargo_id',{
+		templateUrl: 'View/cargos/detailsCargo.html',
+		controller: 'CargosCtrl'
+	})
 });

@@ -1,4 +1,10 @@
 <?php
+// define('HOST','localhost');
+// define('DBNAME','u187506545_chegu');
+// define('CHARSET','utf8');
+// define('USER','u187506545_chegu');
+// define('PWD','webcheguei');
+
 define('HOST','localhost');
 define('DBNAME','cheguei');
 define('CHARSET','utf8');

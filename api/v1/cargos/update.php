@@ -1,9 +1,10 @@
 <?php 
+header('Access-Control-Allow-Origin: *'); 
 header("Content-Type: application/json; charset=UTF-8");
-header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Allow-Methods: POST,OPTIONS");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-header('Access-Control-Allow-Origin: *'); 
+
 include_once "../autoload.php";
 
 $cargo = new CargosController();
@@ -17,8 +18,8 @@ function notEmpty($field){
 }
 
 if( isset($data) ){
-	if( notEmpty($data->cargo) and notEmpty($data->cargo_id)){
-		$update = $cargo->update($data->cargo,$data->cargo_id);
+	if( notEmpty($data->cargo) and notEmpty($data->id)){
+		$update = $cargo->update($data->cargo,$data->id);
 		if($update){
 			http_response_code(201);
 			echo json_encode(array("message"=>"Cargo atualizado!"));

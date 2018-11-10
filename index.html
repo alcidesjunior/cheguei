@@ -28,11 +28,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
     <script>
       var app = angular.module('ChegueiApp',['ngRoute']);
-      var url = "http://localhost:8080";
+      // var url = "http://ajatdesenvolvimento.com.br/blog/";
+      var url = "http://localhost:8080/";
     </script>
     <script type="text/javascript" src="assets/js/routes.js"></script>
-    <script type="text/javascript" src="assets/js/controllers/frequenciasController.js"></script>
-    <script type="text/javascript" src="assets/js/controllers/funcionariosController.js"></script>
+    <script type="text/javascript" src="assets/js/controllers/frequenciasCtrl.js"></script>
+    <script type="text/javascript" src="assets/js/controllers/funcionariosCtrl.js"></script>
+    <script type="text/javascript" src="assets/js/controllers/cargosCtrl.js"></script>
 
   </head>
 
@@ -52,7 +54,7 @@
           <a class="nav-link" href="#">Frequências <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item dropdown active">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Funcionários
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -61,12 +63,12 @@
           </div>
         </li>
         <li class="nav-item dropdown active">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Cargos
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Adicionar novo</a>
-            <a class="dropdown-item" href="#">Ver todos</a>
+            <a class="dropdown-item" href="#!novoCargo">Adicionar novo</a>
+            <a class="dropdown-item" href="#!cargos">Ver todos</a>
           </div>
         </li>
       </ul>
