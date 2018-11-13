@@ -111,10 +111,13 @@ class FuncionarioModel{
 					$queryDispositivo = $this->_db->prepare($this->sql);
 					$queryDispositivo->execute();
 
-
+					$this->setSql("select * from frequencia where funcionario_id={$funcionariosResult->id}");
+					$queryFrequencia = $this->_db->prepare($this->sql);
+					$queryFrequencia->execute();
 					foreach($funcionariosArray['funcionarios'] as $currentFuncionario){
 						if( $funcionariosResult->id == $currentFuncionario->id ){
 							$currentFuncionario->dispositivos = $queryDispositivo->fetchall(PDO::FETCH_OBJ);
+							$currentFuncionario->frequencia = $queryFrequencia->fetchall(PDO::FETCH_OBJ);
 						}
 						
 					}
