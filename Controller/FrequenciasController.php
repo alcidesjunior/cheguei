@@ -17,6 +17,9 @@ class FrequenciasController{
 		$dt = $this->frequencia->insert($funcionario_id,$hora_entrada,$hora_saida,$created_at);
 		return ($dt ? true : false);
 	}
+	public function getLastID(){
+		return $this->frequencia->getLastID();
+	}
 	public function update($fieldValue, $condition){
 		/*
 			$fieldValue = ["campo"=>"valor"]

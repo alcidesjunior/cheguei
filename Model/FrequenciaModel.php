@@ -11,6 +11,9 @@ class FrequenciaModel{
 	protected function setSql($sql_query){
 		return isset($sql_query) ? $this->sql = $sql_query : false;
 	}
+	public function getLastID(){
+		return $this->_db->lastInsertId();
+	}
 	public function getAll($orderBy="frequencia.created_at",$order="desc"){
 		$this->setSql("
 			select 

@@ -17,7 +17,7 @@ if(notEmpty($data->funcionario_id) and notEmpty($data->hora_entrada) ){
 	$create = $frequencia->create($data->funcionario_id,$data->hora_entrada,date('0000-00-00'),date('Y-m-d H:i:s'));
 	if($create){
 		http_response_code(403);
-		echo json_encode( array('message' =>'Entrada registrada!') );
+		echo json_encode( array('message' =>'Entrada registrada!',"frequencia_id"=>$frequencia->getLastID()) );
 	}
 }else{
 	http_response_code(403);
