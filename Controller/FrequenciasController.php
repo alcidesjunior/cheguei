@@ -7,8 +7,8 @@ class FrequenciasController{
 		$this->frequencia = new FrequenciaModel();
 	}
 
-	public function getAll(){
-		return $this->frequencia->getAll();
+	public function getAll($order,$by,$condition){
+		return $this->frequencia->getAll($order,$by,$condition);
 	}
 	public function show($id){
 		return $this->frequencia->getById($id);

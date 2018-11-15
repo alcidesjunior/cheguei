@@ -28,8 +28,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
     <script>
       var app = angular.module('ChegueiApp',['ngRoute']);
-      // var url = "http://ajatdesenvolvimento.com.br/blog/";
-      var url = "http://localhost:8080/";
+      app.filter("mydate", function () {
+    return function (x) {
+      console.log(x.substr(0));
+          return new Date(x.substr(0));
+      };
+  });
+      var url = "http://ajatdesenvolvimento.com.br/blog/";
+      // var url = "http://localhost:8080/";
     </script>
     <script type="text/javascript" src="assets/js/routes.js"></script>
     <script type="text/javascript" src="assets/js/controllers/frequenciasCtrl.js"></script>

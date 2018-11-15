@@ -14,7 +14,13 @@ class FrequenciaModel{
 	public function getLastID(){
 		return $this->_db->lastInsertId();
 	}
-	public function getAll($orderBy="frequencia.created_at",$order="desc"){
+	public function getAll($orderBy="frequencia.created_at",$order="desc", $condition = "today"){
+		if($condition == "today"){
+			$condition = "where frequencia.hora_entrada like '".date('Y-m-d')."%'";
+		}else if($condition == "todas"){
+			$condition = "";
+		}
+
 		$this->setSql("
 			select 
 				funcionarios.nome,
@@ -32,7 +38,9 @@ class FrequenciaModel{
 				funcionarios
 			on 
 				frequencia.funcionario_id = funcionarios.id
+			$condition
 		 order by ".$orderBy." ".$order);
+		// die($this->sql);
 		$query = $this->_db->prepare($this->sql);
 		try{
 			$query->execute();
@@ -42,7 +50,7 @@ class FrequenciaModel{
 			print($e->getMessage());
 		}
 	}
-	public function insert($funcionario_id,$hora_entrada,$hora_saida,$created_at){
+	public function insert($funcionario_id,$hora_entrada,$hora_saida='0000-00-00 00:00:00',$created_at){
 		$this->setSql("insert into frequencia(funcionario_id,hora_entrada,hora_saida,created_at) values (?,?,?,?)");
 		$query  = $this->_db->prepare($this->sql);
 		$query->bindValue(1,$funcionario_id);

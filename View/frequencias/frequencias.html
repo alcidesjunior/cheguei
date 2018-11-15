@@ -1,9 +1,24 @@
 <section id="freq">
       <div class="container">
-        <div class="form-row align-items-center">
-          <div class="col-auto">
-            <label class="sr-only" for="inlineFormInput">Filtrar</label>
-            <input ng-model="searchFrequencia" type="search" class="form-control w-100 mb-4" id="inlineFormInput" placeholder="Pesquisar">
+        <div class="formx-row align-items-center">
+          <div class="col-autox">
+            <div class="row">
+              <div class="col-lg-1">
+                <h3 class="label">Filtro</h3>
+              </div>
+              <div class="col-lg-4">
+                <input ng-model="search" type="search" class="form-control w-100 mb-4" id="inlineFormInput" placeholder="Pesquisar">
+              </div>
+              <div class="col-lg-3">
+                <select ng-model="filtro" class="form-control">
+                  <option value="data">Data</option>
+                </select>
+              </div>
+              <div class="col-lg-3">
+                <button type="button" class="btn btn-default" ng-click="filtrar(filtro,search)" ng-blur="filtrar(filtro,search)">Buscar</button>
+              </div>
+            </div>
+            
           </div>
         </div>
       </div>
@@ -12,20 +27,29 @@
         <table class="table">
             <thead class="thead text-white" style="background-color: var(--azul-escuro);">
               <tr>
+                <th scope="col">Hora Entrada</th>
                 <th scope="col">Funcionário</th>
                 <th scope="col">RG</th>
                 <th scope="col">CPF</th>
-                <th scope="col">Hora Entrada</th>
+                
                 <th scope="col">Hora Saída</th>
               </tr>
             </thead>
           <tbody>
-                <tr ng-repeat="frequencia in frequencias | filter:searchFrequencia">
+                <tr ng-repeat="frequencia in frequencias"> <!--  | filter:searchFrequencia"> -->
+                  <td style="color: blue">{{frequencia.hora_entrada | mydate | date:'dd/MM/yyyy HH:mm:ss'}}</td>
                   <td>{{frequencia.nome}}</td>
                   <td>{{frequencia.rg}}</td>
                   <td>{{frequencia.cpf}}</td>
-                  <td >{{frequencia.hora_entrada | date:'dd/MM/yyyy HH:mm:ss'}}</td>
-                  <td>{{frequencia.hora_saida}}</td>
+                  
+                  <td >
+                    <span ng-if="frequencia.hora_saida != '0000-00-00 00:00:00'" style="color: red">
+                    {{frequencia.hora_saida | mydate | date:'dd/MM/yyyy HH:mm:ss'}}
+                    </span>
+                    <span ng-if="frequencia.hora_saida == '0000-00-00 00:00:00'" style="color: orange">
+                    Aguardando saída...
+                    </span>
+                  </td>
                 </tr>
               </tbody>
           </table>
