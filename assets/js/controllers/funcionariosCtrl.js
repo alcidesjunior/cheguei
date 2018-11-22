@@ -53,12 +53,19 @@ app.controller('FuncionariosCtrl',function($scope,$http,$routeParams){
 	$scope.atualizar=function(){
 		console.log($scope.funcionario.dispositivos);
 		$http.post(url+'/cheguei/api/v1/funcionarios/update.php',$scope.funcionario).then(function(response){
-			console.log(response.data);
+			if(confirm(response.data.message)){
+				window.location = "#!funcionarios";
+			}
+			window.location = "#!funcionarios";
 		});
 	};
 	$scope.cadastrar = function(){
 		$http.post(url+'/cheguei/api/v1/funcionarios/create.php',$scope.funcionario).then(function(response){
-			console.log(response.data);
+			
+			if(confirm(response.data.message)){
+				window.location = "#!funcionarios";
+			}
+			window.location = "#!funcionarios";
 		});
 	};
 	$scope.getFuncionarios();

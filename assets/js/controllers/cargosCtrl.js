@@ -8,6 +8,10 @@ app.controller('CargosCtrl',function($scope,$http,$routeParams){
 	$scope.cadastrar = function(){
 		$http.post(url+'/cheguei/api/v1/cargos/create.php',$scope.cargo).then(function(response){
 			console.log(response.data);
+			if(confirm(response.data.message)){
+				window.location = "#!cargos";
+			}
+			window.location = "#!cargos";
 		});
 	};
 	$scope.getCargoByID = function(id){
@@ -18,7 +22,10 @@ app.controller('CargosCtrl',function($scope,$http,$routeParams){
 	$scope.atualizar = function(){
 		console.log($scope.cargo);
 		$http.post(url+'/cheguei/api/v1/cargos/update.php',$scope.cargo).then(function(response){
-			console.log(response.data);
+			if(confirm(response.data.message)){
+				window.location = "#!cargos";
+			}
+			window.location = "#!cargos";
 		});
 	}
 	$scope.getCargos();
