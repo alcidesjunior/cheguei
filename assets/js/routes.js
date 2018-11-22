@@ -4,6 +4,10 @@ app.config(function($routeProvider){
 		templateUrl:'View/frequencias/frequencias.html',
 		controller: 'FrequenciasCtrl'
 	})
+	.when('/relatorioFrequencia',{
+		templateUrl: 'View/frequencias/relatorioFrequencia.html',
+		controller: 'FrequenciasCtrl'
+	})
 	.when('/funcionarios',{
 		templateUrl: 'View/funcionarios/funcionarios.html',
 		controller: 'FuncionariosCtrl'

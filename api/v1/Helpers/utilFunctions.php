@@ -11,4 +11,13 @@ function keyExist($field,$array){
 	}
 	return false;
 }
+function dateBrToEUA($date){
+	if(notEmpty($date)){
+		$local = explode('/', $date);
+		$local = $local[2]."-".$local[1]."-".$local[0];
+
+		return $local;
+	}
+	return;
+}
 ?>

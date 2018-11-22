@@ -7,8 +7,8 @@ class FrequenciasController{
 		$this->frequencia = new FrequenciaModel();
 	}
 
-	public function getAll($order,$by,$condition){
-		return $this->frequencia->getAll($order,$by,$condition);
+	public function getAll($order,$by,$condition,$filtered){
+		return $this->frequencia->getAll($order,$by,$condition,$filtered);
 	}
 	public function show($id){
 		return $this->frequencia->getById($id);
@@ -25,6 +25,12 @@ class FrequenciasController{
 			$fieldValue = ["campo"=>"valor"]
 		*/
 		return $this->frequencia->update($fieldValue, $condition);
+	}
+	public function getReport($date1,$date2){
+		return $this->frequencia->getReport($date1,$date2);
+	}
+	public function getFrequenciaByFuncID($funcionario_id,$param1,$param2){
+		return $this->frequencia->etFrequenciaByFuncID($funcionario_id,$param1,$param2);
 	}
 	public function find($term){
 		return $this->frequencia->find($term);

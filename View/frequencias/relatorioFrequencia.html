@@ -1,0 +1,27 @@
+
+<section>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-2" >
+				<strong>Intervalo entre</strong>
+			</div>
+			<div class="col-lg-2">
+				<input type="text" ng-model="dataInicio" class="form-control" placeholder="Data início">
+			</div>
+			<div class="col-lg-2">
+				<input type="text" ng-model="dataFim" class="form-control" placeholder="Data fim">
+				
+			</div>
+			<div class="col-lg-2">
+				<button type="button" class="btn btn-info" ng-click="filtroRelatorio(dataInicio,dataFim)">Buscar</button>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- <table class="table table-striped">
+	<tr>
+		<th>Data/Hora Entrada</th>
+		<th></th>
+	</tr>
+</table> -->
+<div google-chart chart="chart_div" style="height:600px; width:100%;"></div>

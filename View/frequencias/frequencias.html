@@ -29,8 +29,8 @@
               <tr>
                 <th scope="col">Hora Entrada</th>
                 <th scope="col">Funcionário</th>
-                <th scope="col">RG</th>
-                <th scope="col">CPF</th>
+                <th scope="col">Cargo</th>
+                <!-- <th scope="col">CPF</th> -->
                 
                 <th scope="col">Hora Saída</th>
               </tr>
@@ -39,8 +39,8 @@
                 <tr ng-repeat="frequencia in frequencias"> <!--  | filter:searchFrequencia"> -->
                   <td style="color: blue">{{frequencia.hora_entrada | mydate | date:'dd/MM/yyyy HH:mm:ss'}}</td>
                   <td>{{frequencia.nome}}</td>
-                  <td>{{frequencia.rg}}</td>
-                  <td>{{frequencia.cpf}}</td>
+                  <td>{{frequencia.cargo}}</td>
+                  <!-- <td>{{frequencia.cpf}}</td> -->
                   
                   <td >
                     <span ng-if="frequencia.hora_saida != '0000-00-00 00:00:00'" style="color: red">

@@ -16,15 +16,15 @@ if(isset($_GET['filtro']) && $_GET['filtro'] == "data"){
 	if(!empty($_GET['search']) && $_GET['search'] !="todas"){
 		$data = explode("/",$_GET['search']);
 		$data = $data[2]."-".$data[1]."-".$data[0];
-		$frequencias = $frequencia->getAll("frequencia.created_at","desc","where frequencia.hora_entrada like '$data%'");
+		$frequencias = $frequencia->getAll("frequencia.created_at","desc","where frequencia.hora_entrada like '$data%'",false);
 	}else{
-		$frequencias = $frequencia->getAll("frequencia.created_at","desc","todas");
+		$frequencias = $frequencia->getAll("frequencia.created_at","desc","todas",false);
 	}
 	// die($data);
 	
 
 }else{
-	$frequencias = $frequencia->getAll("frequencia.created_at","desc","today");
+	$frequencias = $frequencia->getAll("frequencia.created_at","desc","today",false);
 }
 http_response_code(200);
 echo json_encode($frequencias);
